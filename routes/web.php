@@ -21,5 +21,6 @@ Route::post('delete/{id}',
 )->name('customer.delete');
 
 
-Route::get('login',[loginController::class,'login'])->name('login');
+Route::get('login',[loginController::class,'show_login'])->name('login.page');
 
+Route::post('logedin',[loginController::class,'login'])->name('login.submit');

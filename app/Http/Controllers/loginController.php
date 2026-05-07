@@ -7,8 +7,16 @@ use Illuminate\Http\Request;
 class loginController extends Controller
 {
     //
-    public function login()
+    public function show_login()
     {
         return view('login');
     }
+    public function login(Request $request)
+{
+    if ($request->email == 'arit@test.com' && $request->password == '11111111') {
+        return redirect()->route('show');
+    }
+
+    return back()->withErrors(['Invalid credentials']);
+}
 }

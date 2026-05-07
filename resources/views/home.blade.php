@@ -32,7 +32,7 @@
                 View Records
             </a>
             
-            <a href="{{ route('login') }}"
+            <a href="{{ route('login.page') }}"
                class="bg-purple-500 hover:bg-purple-600 px-5 py-2 rounded-lg transition">
                 Login
             </a>

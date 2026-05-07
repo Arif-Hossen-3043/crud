@@ -3,123 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center justify-center px-4">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-    <!-- Login Container -->
-    <div class="w-full max-w-md">
+    <div class="max-w-md w-full bg-white shadow-2xl rounded-2xl p-8">
 
-        <!-- Card -->
-        <div class="bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl rounded-3xl p-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">
+            Login Panel
+        </h2>
 
-            <!-- Heading -->
-            <div class="text-center mb-8">
+        <!-- Error -->
+        @if ($errors->any())
+            <div class="bg-red-100 text-red-700 p-3 mb-4 rounded">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
 
-                <h1 class="text-4xl font-extrabold text-white mb-2">
-                    Welcome Back
-                </h1>
+        <form action="{{ route('login.submit') }}" method="POST">
+            @csrf
 
-                <p class="text-gray-300">
-                    Login to your CRUD dashboard
-                </p>
-
+            <!-- Email -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                </label>
+                <input type="email" name="email"
+                       class="w-full border px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                       placeholder="arit@test.com"
+                       value="arit@test.com"
+                       required>
             </div>
 
-            <!-- Error Message -->
-            @if ($errors->any())
-                <div class="bg-red-500/20 border border-red-400 text-red-200 px-4 py-3 rounded-lg mb-6">
-                    <ul class="text-sm space-y-1">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <!-- Form -->
-            <form action="" method="POST" class="space-y-6">
-
-                @csrf
-
-                <!-- Email -->
-                <div>
-
-                    <label class="block text-sm font-medium text-gray-200 mb-2">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        required
-                    >
-
-                </div>
-
-                <!-- Password -->
-                <div>
-
-                    <label class="block text-sm font-medium text-gray-200 mb-2">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter your password"
-                        class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        required
-                    >
-
-                </div>
-
-                <!-- Remember + Forgot -->
-                <div class="flex items-center justify-between text-sm">
-
-                    <label class="flex items-center gap-2 text-gray-300">
-                        <input type="checkbox" class="rounded">
-                        Remember me
-                    </label>
-
-                    <a href="#"
-                       class="text-blue-300 hover:text-blue-200 transition">
-                        Forgot Password?
-                    </a>
-
-                </div>
-
-                <!-- Button -->
-                <button
-                    type="submit"
-                    class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-xl font-semibold text-lg shadow-lg transition duration-300">
-
-                    Login
-
-                </button>
-
-            </form>
-
-            <!-- Register -->
-            <div class="text-center mt-8 text-gray-300">
-
-                Don't have an account?
-
-                <a href="#"
-                   class="text-blue-300 hover:text-blue-200 font-semibold">
-                    Register
-                </a>
-
+            <!-- Password -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Password
+                </label>
+                <input type="password" name="password"
+                       class="w-full border px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                       placeholder="11111111"
+                       required>
             </div>
 
-        </div>
+            <!-- Button -->
+            <button type="submit"
+                    class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                Login
+            </button>
+
+        </form>
+
+        <p class="text-center text-sm text-gray-500 mt-4">
+            Default: arit@test.com / 11111111
+        </p>
 
     </div>
 
