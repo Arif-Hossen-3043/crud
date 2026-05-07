@@ -11,6 +11,12 @@
                 href="about">About</a>
             <a class="text-sm text-navbar-nav-foreground hover:text-primary-hover focus:outline-hidden focus:text-primary-focus"
                 href="/records">Records</a>
+
+                        <!-- 🔥 LOGOUT BUTTON -->
+        <a href="{{ route('logout') }}"
+           class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
+            Logout
+        </a>
         </div>
     </nav>
 </header>

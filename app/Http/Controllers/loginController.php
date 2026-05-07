@@ -12,11 +12,14 @@ class loginController extends Controller
         return view('login');
     }
     public function login(Request $request)
-{
-    if ($request->email == 'arit@test.com' && $request->password == '11111111') {
-        return redirect()->route('show');
-    }
+    {
+        if ($request->email == 'arit@test.com' && $request->password == '11111111') {
 
-    return back()->withErrors(['Invalid credentials']);
-}
+            session(['user' => $request->email]);
+
+            return redirect()->route('show');
+        }
+
+        return back()->withErrors(['Invalid credentials']);
+    }
 }
